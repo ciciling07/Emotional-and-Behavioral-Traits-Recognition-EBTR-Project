@@ -1,4 +1,4 @@
-# 410project
+# BehavioralCoding CS410Project
 Psychological behavioral coding toolbox
 
 ## 
