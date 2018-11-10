@@ -8,7 +8,6 @@ APP_ID = '14293560'
 API_KEY = 'qtjdwwOsGvEN836DsyM4SpTj'
 SECRET_KEY = '99eEeI8IC5wPypcoSz3jWnioAiqQjGYd'
 
-
 def get_config(cfg):
     """
     return cfg json 
@@ -18,13 +17,11 @@ def get_config(cfg):
         configjson = json.load(f)
     return configjson
 
-
 client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
 cfg_json = get_config("C:\\Users\\hongy\\Documents\\work\\cici\\BehavioralCoding-cs410project\\config.json")
 print(cfg_json)
 psy_ffmpeg_ins = psy_ffmpeg.psy_ffmpeg(cfg_json = cfg_json)
 converted_audio_filename = psy_ffmpeg_ins.VideoToAudio(videofilefullpath="C:\\Users\\hongy\\Documents\\work\\cici\\BehavioralCoding-cs410project\\sample.mov")
-
 
 
 # 读取文件

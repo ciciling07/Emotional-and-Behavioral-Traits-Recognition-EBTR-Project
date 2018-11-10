@@ -1,7 +1,9 @@
 # encoding:utf-8
+
 """
 This is a wrapper for ffmpeg in the system.
 """
+
 import json
 import os
 
