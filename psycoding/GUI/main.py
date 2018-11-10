@@ -14,7 +14,6 @@ videopath = ""
 def getfilename():
     # get video path
     videopath = QFileDialog.getOpenFileName()
-    
     # processing video
     #return fname
     #print(fname)
