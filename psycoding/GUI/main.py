@@ -2,30 +2,42 @@ import sys,os
 
 from PyQt5.QtWidgets import (QWidget, QMainWindow, QAction, 
             qApp, QApplication, QTextEdit, QVBoxLayout, QHBoxLayout, 
-            QPushButton, QScrollArea, QFileDialog)
+            QPushButton, QScrollArea, QFileDialog, QMessageBox)
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 
-sys.path.append("..")
+sys.path.append(".")
+from psycoding.ffmpeg.psy_ffmpeg import psy_ffmpeg
 
+#from ffmpeg.psy_ffmpeg import psy_ffmpeg
+
+# ffmpeg instance
+ffins = psy_ffmpeg("config.json")
 
 """
 Global variable
 
 """
 videopath = ""
+savedfilepath = ""
+"""
+Configure Action
+"""
+
+
+"""
+Convert data
+"""
+audiodatapath = []
+
+textdatapath = []
 
 def getfilename():
-    # get video path
     videopath = QFileDialog.getOpenFileName()
-    # processing video
-
-    #return fname
-    #print(fname)
 
 def savefile():
     savefile = QFileDialog.getSaveFileName()
-    print(savefile)
-
+    savedfilepath = savefile[0]
+    
 
 class mainwidget(QWidget):
     def __init__(self):
@@ -33,7 +45,22 @@ class mainwidget(QWidget):
         self.textbox = []
         self.savefilename = ""
         self.initUI()
+    
+    def configffmpeg(self):
+        ffmpegbinpath = QFileDialog.getOpenFileName()
+        if ffins.checkffmpeg(ffmpegbinpath):
+            videopath = ffmpegbinpath
+        else:
+            QMessageBox.warning(self,"Warning","invalid path.", QMessageBox.Ok)
+        #self.setStatusTip("load ffmpeg successfully!")
+
     def loadvideo(self):
+        getfilename()
+        if not ffins.ffmpegbinpath:
+            QMessageBox.warning(self,"Warning","empty ffmpegpath, please set path of ffmpeg.", QMessageBox.Ok)
+        #self.statusTip("starting converting video...")
+        audiodatapath = psy_ffmpeg.VideoToAudio(videopath)
+        
         result = "\xe7\x9c\x8b\xe7\x9c\x8b\xe5\x91\x97\xe5\x87\xba\xe5\x8f\x91\xef\xbc\x8c\xe5\xb0\xb1\xe6\x98\xaf\xe8\xbf\x99\xe6\xa0\xb7\xef\xbc\x8c\xe6\x88\x91\xe4\xb8\x8d\xe6\x83\xb3\xe6\xaf\x8f\xe5\xa4\xa9\xe5\xb0\xb1\xe6\x98\xaf\xe5\xb7\xa5\xe4\xbd\x9c\xe5\x8d\x95\xe4\xbd\x8d\xe5\x88\xb0\xe5\xae\xb6\xef\xbc\x8c\xe7\x84\xb6\xe5\x90\x8e\xe5\xb0\xb1\xe3\x80\x82"
         result = result.encode("raw_unicode_escape")
         resultstr = result.decode()
@@ -147,8 +174,16 @@ class Example(QMainWindow):
         # menubar -> analyze
         AnalyzeMenu = menubar.addMenu('Analyze')
         
+
+        configffmpegAction = QAction("ffmpegpath",self)
+        configffmpegAction.setStatusTip("config ffmpeg bin path")
+        configffmpegAction.triggered.connect(mw.configffmpeg)
         # menubar -> config
         ConfigMenu = menubar.addMenu('Configure')
+        ConfigMenu.addAction(configffmpegAction)
+
+
+
 
         # menubar -> About
         AboutMenu = menubar.addMenu("About")
