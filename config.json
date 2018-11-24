@@ -1,4 +1,5 @@
 {
     "ffmpegbinpath":"",
-    "rootfile":""
+    "rootfile":"",
+    "videopath":""
 }
