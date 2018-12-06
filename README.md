@@ -48,14 +48,14 @@ File-> load video or File -> load processeddata if you have saved it.
 
 Edit -> Save
 
-Analysis -> match words
+Analysis -> match words ##
 We use words in the “words_set_file” as a dictionary to match all the words in the text. Then we show the results in the following textbox.
 
-Analysis -> search words
+Analysis -> search words ##
 Example: we search the word “mood”, then we get the results.
 
 
-Analysis -> sentimental analysis
+Analysis -> sentimental analysis ##
 Our semtimental analysis is based on a pre-trained model because there is not enough data
 in this field.
 The model is based on Bayesian predictive model:
