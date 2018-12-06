@@ -28,7 +28,36 @@ download ffmpeg windows build: https://ffmpeg.zeranoe.com/builds/ and extract it
 pip install baidu-aip # Baidu AIP service
 pip install thulac # THU Lexical Analyzer for Chinese
 pip install metapy # Meta analysis for English
+pip install jieba # 
+pip install snowNLP # sentimental analysis pretrained model
 ~~~
 
+#### Step3: Clone this project to the local machine
 
 
+
+## 2. Usage
+
+#### Step1: Download test video
+You can use your own video. We can't publish our test video because it is under protection.
+
+#### Step2:
+File-> load video or File -> load processeddata if you have saved it.
+
+#### Methods
+
+Edit -> Save
+
+Analysis -> match words
+We use words in the “words_set_file” as a dictionary to match all the words in the text. Then we show the results in the following textbox.
+
+Analysis -> search words
+Example: we search the word “mood”, then we get the results.
+
+
+Analysis -> sentimental analysis
+Our semtimental analysis is based on a pre-trained model because there is not enough data
+in this field.
+The model is based on Bayesian predictive model:
+1. firstly, filter the stop words and use n-gram model to label the sentence.
+2. secondly, used pretrained Bayesian model to get the results.
