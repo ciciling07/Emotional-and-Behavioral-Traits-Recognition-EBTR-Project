@@ -42,10 +42,13 @@ pip install snowNLP # sentimental analysis pretrained model
 You can use your own video. We can't publish our test video because it is under protection.
 
 #### Step2:
-File-> load video or File -> load processeddata if you have saved it.
+
+##### File-> load video 
+Load the video and process it. generate a few textbox.
+##### File -> load processeddata
+Load the preprocesseddata.
 
 #### Methods
-
 Edit -> Save
 
 ##### Analysis -> match words 
