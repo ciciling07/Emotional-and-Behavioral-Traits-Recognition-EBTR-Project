@@ -1,4 +1,4 @@
-# BehavioralCoding CS410Project
+# BehavioralCoding CS410 Project
 Psychological behavioral coding toolbox
 
 ## Author
