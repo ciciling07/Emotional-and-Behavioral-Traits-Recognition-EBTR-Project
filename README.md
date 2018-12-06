@@ -1,4 +1,4 @@
-# BehavioralCoding CS410 Project
+# Emotional and Behavioral Traits Recognition (EBTR) Project - CS410
 Psychological behavioral coding toolbox
 
 ## Author
