@@ -43,6 +43,15 @@ pip install snowNLP # sentimental analysis pretrained model
 You can use your own video. We can't publish our test video because it is under protection.
 
 #### Step2:
+go the root directory of the project. 
+
+~~~{.python}
+python psycoding/GUI/main.py
+~~~
+
+and you will see the user interface.
+
+#### Step3:
 
 ##### File-> load video 
 Load the video and process it. generate a few textbox.
