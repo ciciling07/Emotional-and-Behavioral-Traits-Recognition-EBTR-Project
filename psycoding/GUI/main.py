@@ -133,11 +133,24 @@ class mainwidget(QWidget):
         print(self.videopath)
         if not self.videopath:
             return 
-        output_audio_list = ffins.VideoToAudio(self.videopath)
+        #output_audio_list = ffins.VideoToAudio(self.videopath)
         print("video has been transferred to audio!")
-        xfins.set_audio_path(output_audio_list)
-        inputstr_list = xfins.generate_text()
-        #inputstr = xfins.audio2text(0)
+        #xfins.set_audio_path(output_audio_list)
+        
+        #inputstr_list = xfins.generate_text()
+        """
+        xunfei's api has IP control access strategy. So the TA's IP may not be able to 
+        use the sytsem. In order to avoid this case and show the function of EBTR software.
+        I used the text that is already transferred.
+        """
+        inputstr_list = []
+        with open('VideoTransferData.txt', 'r') as f:
+            while 1:
+                line = f.readline()
+                if not line:
+                    break
+                #print(line)
+                inputstr_list.append(line)
         linecnt = 0
         for i in range(len(inputstr_list)):
             inputstr_list[i] = str(linecnt)+" min-" + str(linecnt + 1) + " min: " + inputstr_list[i]
@@ -165,7 +178,7 @@ class mainwidget(QWidget):
                 textfile_list += [line]
                 if not line:
                     break
-        print(textfile_list)
+        #print(textfile_list)
         self.addtextboxlist(textfile_list[:-1])
 
     def savefile(self):
