@@ -165,6 +165,7 @@ class mainwidget(QWidget):
                 f.writelines(inputstr + "\n")
 
     def load_processed_data(self):
+        self.removetextbox(0)
         self.__textbox = []
         self.__textboxnum = 0
         processed_data_path = QFileDialog.getOpenFileName()[0]
